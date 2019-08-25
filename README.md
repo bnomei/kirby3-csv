@@ -23,7 +23,7 @@ This plugin is free but if you use it in a commercial project please consider to
 
 ## Dependencies
 
-- https://github.com/thephpleague/csv
+- [thephpleague/csv](https://github.com/thephpleague/csv)
 
 ## Disclaimer
 
