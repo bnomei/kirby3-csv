@@ -30,7 +30,7 @@ This plugin is currently **just** a thin wrapper around [thephpleague/csv](https
 
 ## Roadmap
 
-[ ] Read/Write to Kirby Structures from CSV (with optional mapping headers to name of Fields). [see Issue #1](https://github.com/bnomei/kirby3-csv/issues/1)
+- [ ] Read/Write to Kirby Structures from CSV (with optional mapping headers to name of Fields). [see Issue #1](https://github.com/bnomei/kirby3-csv/issues/1)
 
 ## Dependencies
 
