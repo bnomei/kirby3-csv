@@ -14,7 +14,12 @@
     "kirby3",
     "kirby3-cms",
     "kirby3-plugin",
-    "csv"
+    "csv",
+    "json",
+    "xml",
+    "html",
+    "read",
+    "write"
   ],
   "autoload": {
     "psr-4": {
@@ -47,6 +52,12 @@
     "dist": [
       "composer install --no-dev --optimize-autoloader",
       "git rm -rf --cached .; git add .;"
+    ],
+    "kirby": [
+      "composer install",
+      "composer update",
+      "composer install --working-dir=tests/kirby --no-dev --optimize-autoloader",
+      "composer update --working-dir=tests/kirby"
     ]
   },
   "extra": {

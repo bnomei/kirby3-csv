@@ -7,4 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 final class CSVTest extends TestCase
 {
+    public function testCSVLibExists()
+    {
+        $this->assertIsString(League\Csv\Reader::class);
+    }
 }

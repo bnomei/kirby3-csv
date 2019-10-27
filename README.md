@@ -11,12 +11,10 @@
 [![Gitter](https://flat.badgen.net/badge/gitter/chat?color=982ab3)](https://gitter.im/bnomei-kirby-3-plugins/community) 
 [![Twitter](https://flat.badgen.net/badge/twitter/bnomei?color=66d9ef)](https://twitter.com/bnomei)
 
-@@@TODO@@@
-
-## Commercial Usage
+Read and Write CSV Data
 
 This plugin is free but if you use it in a commercial project please consider to 
-- [make a donation 🍻](https://www.paypal.me/bnomei/5) or
+- [make a donation 🍻](https://www.paypal.me/bnomei/1) or
 - [buy me ☕](https://buymeacoff.ee/bnomei) or
 - [buy a Kirby license using this affiliate link](https://a.paddle.com/v2/click/1129/35731?link=1170)
 
@@ -28,7 +26,11 @@ This plugin is free but if you use it in a commercial project please consider to
 
 ## Usecase
 
-@@@TODO@@@
+This plugin is currently **just** a thin wrapper around [thephpleague/csv](https://csv.thephpleague.com/) and used to add its functionality to Kirby 3 (even without using composer).
+
+## Roadmap
+
+[ ] Read/Write to Kirby Structures from CSV (with optional mapping headers to name of Fields). [see Issue #1](https://github.com/bnomei/kirby3-csv/issues/1)
 
 ## Dependencies
 
