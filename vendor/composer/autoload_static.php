@@ -41,7 +41,7 @@ class ComposerStaticInit02c47e9b2d03e8bda386231f7e5f4771
     );
 
     public static $classMap = array (
-        'Bnomei\\Calendar' => __DIR__ . '/../..' . '/classes/CSV.php',
+        'Bnomei\\CSV' => __DIR__ . '/../..' . '/classes/CSV.php',
         'Kirby\\ComposerInstaller\\CmsInstaller' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/CmsInstaller.php',
         'Kirby\\ComposerInstaller\\Installer' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/Installer.php',
         'Kirby\\ComposerInstaller\\Plugin' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/Plugin.php',
