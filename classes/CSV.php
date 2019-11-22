@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bnomei;
 
-final class Calendar
+final class CSV
 {
     // https://csv.thephpleague.com/
 }
