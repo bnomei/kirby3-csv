@@ -24,37 +24,16 @@ use function array_reduce;
  */
 class Statement
 {
-    /**
-     * Callables to filter the iterator.
-     *
-     * @var callable[]
-     */
-    protected $where = [];
+    /** @var array<callable> Callables to filter the iterator. */
+    protected array $where = [];
+    /** @var array<callable> Callables to sort the iterator. */
+    protected array $order_by = [];
+    /** iterator Offset. */
+    protected int $offset = 0;
+    /** iterator maximum length. */
+    protected int $limit = -1;
 
     /**
-     * Callables to sort the iterator.
-     *
-     * @var callable[]
-     */
-    protected $order_by = [];
-
-    /**
-     * iterator Offset.
-     *
-     * @var int
-     */
-    protected $offset = 0;
-
-    /**
-     * iterator maximum length.
-     *
-     * @var int
-     */
-    protected $limit = -1;
-
-    /**
-     * Named Constructor to ease Statement instantiation.
-     *
      * @throws Exception
      */
     public static function create(callable $where = null, int $offset = 0, int $limit = -1): self
@@ -134,7 +113,7 @@ class Statement
     /**
      * Execute the prepared Statement on the {@link Reader} object.
      *
-     * @param string[] $header an optional header to use instead of the CSV document header
+     * @param array<string> $header an optional header to use instead of the CSV document header
      */
     public function process(TabularDataReader $tabular_data, array $header = []): TabularDataReader
     {

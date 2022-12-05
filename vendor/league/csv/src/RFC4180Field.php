@@ -43,37 +43,24 @@ class RFC4180Field extends php_user_filter
     public const FILTERNAME = 'convert.league.csv.rfc4180';
 
     /**
-     * the filter name used to instantiate the class with.
-     *
-     * @var string
-     */
-    public $filtername;
-
-    /**
-     * @var mixed value passed to passed to stream_filter_append or stream_filter_prepend functions.
-     */
-    public $params;
-
-    /**
      * The value being search for.
      *
      * @var string[]
      */
-    protected $search;
+    protected array $search;
 
     /**
      * The replacement value that replace found $search values.
      *
      * @var string[]
      */
-    protected $replace;
+    protected array $replace;
 
     /**
      * Characters that triggers enclosure with PHP fputcsv.
      *
-     * @var string
      */
-    protected static $force_enclosure = "\n\r\t ";
+    protected static string $force_enclosure = "\n\r\t ";
 
     /**
      * Static method to add the stream filter to a {@link AbstractCsv} object.
@@ -106,19 +93,11 @@ class RFC4180Field extends php_user_filter
             throw new InvalidArgumentException('The sequence contains a character that enforces enclosure or is a CSV control character or is the empty string.');
         }
 
-        $mapper = static function ($value) use ($whitespace_replace) {
-            if (is_string($value)) {
-                return str_replace(' ', $whitespace_replace, $value);
-            }
+        $mapper = fn ($value) => is_string($value)
+            ? str_replace(' ', $whitespace_replace, $value)
+            : $value;
 
-            return $value;
-        };
-
-        $formatter = static function (array $record) use ($mapper): array {
-            return array_map($mapper, $record);
-        };
-
-        return $csv->addFormatter($formatter);
+        return $csv->addFormatter(fn (array $record): array => array_map($mapper, $record));
     }
 
     /**
@@ -147,7 +126,7 @@ class RFC4180Field extends php_user_filter
      */
     public function filter($in, $out, &$consumed, $closing): int
     {
-        while ($bucket = stream_bucket_make_writeable($in)) {
+        while (null !== ($bucket = stream_bucket_make_writeable($in))) {
             $bucket->data = str_replace($this->search, $this->replace, $bucket->data);
             $consumed += $bucket->datalen;
             stream_bucket_append($out, $bucket);
@@ -156,9 +135,6 @@ class RFC4180Field extends php_user_filter
         return PSFS_PASS_ON;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function onCreate(): bool
     {
         if (!$this->isValidParams($this->params)) {
